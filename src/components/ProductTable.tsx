@@ -21,6 +21,7 @@ const ProductTable: React.FC<IProductTableProps> = ({
   setProdcuts,
   ...attributes
 }: IProductTableProps) => {
+  
   const [toggleModal, setToggleModal] = useState(false);
 
   const handleDeleteProduct = (id: number) => {

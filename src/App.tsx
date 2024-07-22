@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import { IProduct } from "./types";
 import ProductTable from "./components/ProductTable";
 import { useState } from "react";
-import "./App.css";
+import "./index.css";
 
 function App() {
   /**
