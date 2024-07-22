@@ -23,6 +23,12 @@ const ProductTable: React.FC<IProductTableProps> = ({
 }: IProductTableProps) => {
   const [toggleModal, setToggleModal] = useState(false);
 
+  const handleDeleteProduct = (id: number) => {
+    setProdcuts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== id)
+    );
+  };
+
   return (
     <div {...attributes}>
       {products.length === 0 ? (
@@ -31,14 +37,17 @@ const ProductTable: React.FC<IProductTableProps> = ({
         <Table
           columns={columns}
           items={products}
-          renderItem={(product) => <Product {...product} />}
+          renderItem={(product) => (
+            <Product handleClickDelete={handleDeleteProduct} {...product} />
+          )}
         />
       )}
-      <button onClick={() => setToggleModal(true)}>Add Item</button>
-      {toggleModal && (
+      {toggleModal ? (
         <Modal title="Add Item" onClose={() => setToggleModal(false)}>
           <AddProductForm setProdcuts={setProdcuts} />
         </Modal>
+      ) : (
+        <button onClick={() => setToggleModal(true)}>Add Item</button>
       )}
     </div>
   );
