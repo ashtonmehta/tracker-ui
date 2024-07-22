@@ -1,35 +1,20 @@
-import "./App.css";
-import ProductCard from "./components/ProductCard";
 import Header from "./components/Header";
 import { IProduct } from "./types";
-
-const products: IProduct[] = [
-  {
-    id: 1,
-    name: "Milk",
-    amount: 1,
-  },
-  {
-    id: 2,
-    name: "Apples",
-    amount: 5,
-  },
-  {
-    id: 3,
-    name: "Bread",
-    amount: 1,
-  }
-]
+import ProductTable from "./components/ProductTable";
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  /**
+   * @todo Replace with Redux RTK Query solution for state management
+   */
+  const [products, setProducts] = useState<IProduct[]>([]);
+
   return (
     <>
       <Header title="Inventory" />
-      {products.map((product) => <ProductCard key={product.id} name={product.name} amount={product.amount} />)}
-      <Header title="Grocery List" />
-      
+      <ProductTable products={products} setProdcuts={setProducts} />
     </>
-
   );
 }
 
