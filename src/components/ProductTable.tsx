@@ -13,6 +13,7 @@ interface IProductTableProps extends React.HTMLAttributes<HTMLDivElement> {
 const columns: IColumn<IProduct>[] = [
   { key: "name", header: "Name" },
   { key: "amount", header: "Amount" },
+  { key: "price", header: "Price" },
   { key: "expiresIn", header: "Expires In" },
 ];
 
@@ -21,7 +22,7 @@ const ProductTable: React.FC<IProductTableProps> = ({
   setProdcuts,
   ...attributes
 }: IProductTableProps) => {
-  
+
   const [toggleModal, setToggleModal] = useState(false);
 
   const handleDeleteProduct = (id: number) => {

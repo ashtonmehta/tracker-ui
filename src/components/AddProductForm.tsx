@@ -8,6 +8,7 @@ interface IAddProductFormProps {
 interface IAddProductFormFields {
   name: string;
   amount: number;
+  price: number;
   expiresIn: number;
 }
 
@@ -59,6 +60,14 @@ const AddProductForm: React.FC<IAddProductFormProps> = ({
         placeholder="Amount"
       />
       {errors.amount && <div>{errors.amount.message}</div>}
+      <input
+        {...register("price", {
+          required: "Price is required",
+        })}
+        type="number"
+        placeholder="Price"
+      />
+      {errors.price && <div>{errors.price.message}</div>}
       <input
         {...register("expiresIn", {
           min: 1,
